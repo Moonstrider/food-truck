@@ -1,18 +1,18 @@
 
-export default function ({ foodTruck }) {
+export default function ({ content }) {
     return (
         <div>
 
-            {/* <span>{foodTruck.locationId}</span> */}
-            <span>{foodTruck.applicant}</span>
-            <span>{foodTruck.facilityType}</span>
+            {/* <span>{content.locationId}</span>
+            <span>{content.applicant}</span>
+            <span>{content.facilityType}</span> */}
 
-            {/* <span id={diaryContent.id} className='timeStyle'>
-                {diaryContent.day}
-            </span>
-            <pre className='preStyle'>
-                {diaryContent.text}
-            </pre> */}
+            {/* <span id={content.locationId} className='typeStyle'>
+                {content.facilityType}
+            </span> */}
+            <p className='preStyle'>
+                {content.applicant}
+            </p>
         </div>
     )
 }

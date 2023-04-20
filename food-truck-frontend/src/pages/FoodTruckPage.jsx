@@ -19,8 +19,6 @@ export default function FoodTruckPage() {
     } else {
       setFoodTruckList(foodTruckFromServer);
     }
-    console.log('bbb,',foodTruckFromServer)
-    console.log('aaa,',foodTruckList)
   };
 
   const fetchFoodTruckList = async () => {
@@ -35,6 +33,7 @@ export default function FoodTruckPage() {
   return (
     <div>
       {
+        
         foodTruckList.length > 0
           ?
           <FoodTruckList myFoodTruckList={foodTruckList}/>

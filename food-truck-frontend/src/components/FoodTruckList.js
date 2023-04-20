@@ -5,7 +5,7 @@ export default function ({ myFoodTruckList }) {
     return (
         <>
             {myFoodTruckList.map((e) => (
-                <FoodTruck key={e.locationId} diaryContent={e} />
+                <FoodTruck key={e.locationId} content={e} />
             ))}
         </>
     )
