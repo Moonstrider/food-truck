@@ -1,0 +1,33 @@
+server:
+  port: ${port:1010}   #run jar, must set port, if not, use default 6010
+
+
+spring:
+  application:
+    name: micro-eureka
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+security:
+  basic:
+    enable: false
+  #turn on http basic certification
+  user:
+    name: 123
+    password: qwe
+#set eureka user account
+
+#disable the erureka server self-preservation-model
+#server:
+#   enable-self-preservation: false
+
