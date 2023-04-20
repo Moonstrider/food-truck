@@ -1,52 +1,45 @@
 import { useState, useEffect } from "react";
 
-import RequestSending from "../../config/RequestSending";
-import UrlConfig from "../../config/UrlConfig";
+import RequestSending from "../config/RequestSending";
+import UrlConfig from "../config/UrlConfig";
+import FoodTruckList from "../components/FoodTruckList"
 
 export default function FoodTruckPage() {
 
-  const [diaryList, setDiaries] = useState([]);
+  const [foodTruckList, setFoodTruckList] = useState([]);
 
   useEffect(() => {
-    getDiaryList();
+    getFoodTruckList();
   }, []);
 
-  const getDiaryList = async () => {
-    const diaryFromServer = await fetchDiaryList();
-    if (null == diaryFromServer) {
-      setDiaries([]);
+  const getFoodTruckList = async () => {
+    const foodTruckFromServer = await fetchFoodTruckList();
+    if (null == foodTruckFromServer) {
+      setFoodTruckList([]);
     } else {
-      setDiaries(diaryFromServer);
+      setFoodTruckList(foodTruckFromServer);
     }
+    console.log('bbb,',foodTruckFromServer)
+    console.log('aaa,',foodTruckList)
   };
 
-  // fetch diaryList from server
-  const fetchDiaryList = async () => {
-    // fetch dbjson server first
-    const resFromDBJSON = await fetch("http://localhost:3100/diaryList");
-    const dataFromDBJSON = await resFromDBJSON.json();
-    // update into backend server
-    await addDiaryListToDB(JSON.stringify(dataFromDBJSON));
-
+  const fetchFoodTruckList = async () => {
     // get from backend server
-    const res = await RequestSending("GET", UrlConfig.allDiary);
+    const res = await RequestSending("GET", UrlConfig.allFoodTruck);
+    console.log('res:',res)
     const { data } = await res.json();
+    console.log('data:',data)
     return data;
   };
 
   return (
     <div>
       {
-        diaryList.length > 0
+        foodTruckList.length > 0
           ?
-          <DiaryList
-            myDiaries={diaryList}
-            tryDelete={deleteDiary}
-            tryToggle={toggleReminder}
-            tryEdit={editDiary}
-          />
+          <FoodTruckList myFoodTruckList={foodTruckList}/>
           :
-          <h1>No diary yet</h1>
+          <h1>No food truck yet</h1>
       }
     </div>
   );
