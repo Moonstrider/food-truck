@@ -34,7 +34,7 @@ public class BizFoodTruckController {
     }
 
     @Operation(summary = "query page list food truck")
-    @GetMapping(value = "/page_list")
+    @PostMapping(value = "/page_list")
     public ApiResult<Page<FoodTruckVO>> queryPageList(
             @Validated @RequestBody RequestPageParam requestPageParam) {
         return ApiResult.ok(bizFoodTruckService.queryPageList(requestPageParam));
